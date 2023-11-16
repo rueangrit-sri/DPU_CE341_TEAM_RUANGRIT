@@ -2,3 +2,19 @@ body{
     background-color: #FFFFF0;
      text-align: center;
 }
+a:link , a:valid{
+    border:8px solid #e6d45a;
+    padding:10px 50px; 
+    background:#67c8d7;
+    width:100px;
+    border-radius:45px;
+}
+.border{
+    border-top-style: double;
+             border-right-style: solid;
+             border-bottom-style: double; 
+             border-left-style: solid;
+             border-width: 10px;
+             border-color: coral;
+             height: 550px;
+}
