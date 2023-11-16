@@ -1,35 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Button and Image Example</title>
-  <style>
-    body {
-      text-align: center;
-      margin: 20px;
-    }
-  </style>
+    <title>Test Image</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            max-width: 10%;
+            display: none;
+        }
+    </style>
 </head>
+
 <body>
-    <button id="myButton">แสดงรูปภาพ</button>
-    <img id="myImage" style="display: none;" src="T:\CE341\Git and Vscode\Web-CE341\Image" alt="Ruangrit Sripromma">
+
+    <button id="showImagesButton">แสดงรูปภาพ</button>
+    <button id="BackButton" style="display: none;">ย้อนกลับ</button>
+    <div class="image-container">
+        <img src="Coah.jpg" alt="Image 1">
+        <img src="Max.jpg" alt="Image 2">
+        <img src="Ohm.png" alt="Image 3">
+        <img src="ruangrit.jpg" alt="Image 4">
+    </div>
 
     <script>
-        // รับอ้างอิง element จาก DOM
-        var button = document.getElementById('myButton');
-        var image = document.getElementById('myImage');
-      
-        // เพิ่ม Event Listener สำหรับคลิกที่ปุ่ม
-        button.addEventListener('click', function() {
-          // ทำการเปลี่ยนค่า style.display เพื่อแสดงรูปภาพ
-          if (image.style.display === 'none') {
-            image.style.display = 'block';
-          } else {
-            image.style.display = 'none';
-          }
+        var showImagesButton = document.getElementById('showImagesButton');
+        var backButton = document.getElementById('BackButton');
+        var images = document.querySelectorAll('.image-container img');
+
+        showImagesButton.addEventListener('click', function () {
+            images.forEach(function (image) {
+                image.style.display = 'block';
+            });
+
+            showImagesButton.style.display = 'none';
+            backButton.style.display = 'inline-block';
         });
-      </script>
-      
+
+        backButton.addEventListener('click', function () {
+            images.forEach(function (image) {
+                image.style.display = 'none';
+            });
+
+            showImagesButton.style.display = 'inline-block';
+            backButton.style.display = 'none';
+        });
+    </script>
+
+    <button onclick="getIPAddress()">Get IP Address</button>
+    <p id="ipResult"></p>
+
+    <script>
+        function getIPAddress() {
+            // ใช้ API จาก ipify.org
+            const apiUrl = 'https://api64.ipify.org?format=json';
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const ipAddress = data.ip;
+                    document.getElementById('ipResult').innerText = 'Your IP Address is: ' + ipAddress;
+                })
+                .catch(error => {
+                    console.error('Error fetching IP address:', error);
+                    document.getElementById('ipResult').innerText = 'Error fetching IP address. Please try again.';
+                });
+        }
+    </script>
+
 </body>
+
 </html>
