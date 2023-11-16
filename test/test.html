@@ -15,5 +15,21 @@
     <button id="myButton">แสดงรูปภาพ</button>
     <img id="myImage" style="display: none;" src="path/to/your/image.jpg" alt="Your Image">
 
+    <script>
+        // รับอ้างอิง element จาก DOM
+        var button = document.getElementById('myButton');
+        var image = document.getElementById('myImage');
+      
+        // เพิ่ม Event Listener สำหรับคลิกที่ปุ่ม
+        button.addEventListener('click', function() {
+          // ทำการเปลี่ยนค่า style.display เพื่อแสดงรูปภาพ
+          if (image.style.display === 'none') {
+            image.style.display = 'block';
+          } else {
+            image.style.display = 'none';
+          }
+        });
+      </script>
+      
 </body>
 </html>
